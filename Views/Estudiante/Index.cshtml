@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MPCAdministrator.Models.Estudiante>
+
+@{
+    ViewBag.Title = "Estudiantes";
+}
+
+<h2>Lista de estudiantes</h2>
+
+<p>
+    @Html.ActionLink("Inscribir estudiante", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tutor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nacionalidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Colegio_Anterior)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Curso)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tutor.Nombre) @Html.DisplayFor(m => item.Tutor.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nacionalidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Colegio_Anterior)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Curso)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Desinscribir", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+</table>
+<hr />
+<h2>@Html.ActionLink("Agregar nuevo tutor", "NTutor")</h2>

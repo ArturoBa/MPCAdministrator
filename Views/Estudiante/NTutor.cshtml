@@ -1,0 +1,73 @@
+﻿@model MPCAdministrator.Models.Tutor
+
+@{
+    ViewBag.Title = "Nuevo tutor";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+        <h2>Nuevo tutor</h2>
+        <div class="form-group">
+            @Html.LabelFor(l => l.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(l => l.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(l => l.Nombre, "", htmlAttributes: new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(l => l.Apellido, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(l => l.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(l => l.Apellido, "", htmlAttributes: new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(l => l.Cedula, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(l => l.Cedula, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(l => l.Cedula, "", htmlAttributes: new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(l => l.Nacionalidad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(l => l.Nacionalidad, "", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(l => l.Nacionalidad, "", htmlAttributes: new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(l => l.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(l => l.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(l => l.Telefono, "", htmlAttributes: new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(l => l.TelefonoAlternativo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(l => l.TelefonoAlternativo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(l => l.TelefonoAlternativo, "", htmlAttributes: new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <input type="submit" value="Agregar tutor" />
+
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Volver a la lista", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

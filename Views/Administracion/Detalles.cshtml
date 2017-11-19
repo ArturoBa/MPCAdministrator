@@ -1,0 +1,38 @@
+﻿@model MPCAdministrator.Models.Empleado
+@{
+    ViewBag.Title = $"Detalle: {Model.Nombre}";
+}
+
+<h2>Detalles de @Model.Nombre</h2>
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Cedula</th>
+            <th>Fecha de contrataci&oacute;n</th>
+            <th>Nacionalidad</th>
+            <th>Telefono</th>
+            <th>Prestamo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayFor(m => m.Nombre) @Html.DisplayFor(m => m.Apellido)</td>
+            <td>@Html.DisplayFor(m => m.Cedula)</td>
+            <td>@Html.DisplayFor(m => m.FechaContratacion)</td>
+            <td>@Html.DisplayFor(m => m.Nacionalidad)</td>
+            <td>@Html.DisplayFor(m => m.Telefono)</td>
+            <td>
+                @if (Model.Prestamo.Count > 0)
+                {
+                    <p>Si tiene- @Html.ActionLink("Ver", "DetallePrestamo")</p>
+                }
+                else {
+                    <p>No tiene</p>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>&#8678;@Html.ActionLink(" Volder a la lista", "Index")</h3>

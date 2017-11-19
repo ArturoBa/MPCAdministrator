@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MPCAdministrator.Models.Empleado>
+@{
+    ViewBag.Title = "Empleados";
+}
+
+<h2>Administraci&oacute;n de empleados</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(n => n.Nombre)</th>
+            <th>@Html.DisplayNameFor(n => n.Cedula)</th>
+            <th>@Html.DisplayNameFor(n => n.Nacionalidad)</th>
+            <th>@Html.DisplayNameFor(n => n.Telefono)</th>
+            <th>@Html.DisplayNameFor(n => n.FechaContratacion)</th>
+            <th><!--Esta fila vacia es para mostrar los enlaces a las operaciones con empleados--></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Nombre @emp.Apellido</td>
+                <td>@emp.Cedula</td>
+                <td>@emp.Nacionalidad</td>
+                <td>@emp.Telefono</td>
+                <td>@emp.FechaContratacion</td>
+                <td>
+                    @Html.ActionLink("Pagar", "PagarEmpleado", new { id = emp.ID }) |
+                    @Html.ActionLink("Hacer Prestamo", "Prestamo", new { id = emp.ID }) |
+                    @Html.ActionLink("Cobrar Prestamo", "Prestamo", new { id = emp.ID }) |
+                    @Html.ActionLink("Informacion personal", "Detalles", new { id = emp.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+<h2>@Html.ActionLink("Ingresar un nuevo empleado", "NEmpleado")</h2>
